@@ -2,4 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 25px;
+}
+/* .titleDesc {
+    position: relative;
+    bottom: 8vh;
+    right: 13.75vw
+} */
+.rainbowText {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+    color: transparent;
 }
