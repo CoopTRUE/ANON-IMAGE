@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
-from werkzeug.utils import secure_filename
-app = Flask(__name__)
+from flask_socketio import SocketIO
 
-ACCEPTABLE_FILENAMES = ['.png', '.jpg', '.jpeg', '.gif']
+ACCEPTABLE_FILENAMES = ['png', 'jpg', 'jpeg', 'gif']
+
+app = Flask(__name__)
+socketio = SocketIO(app)
+
 
 @app.route('/', methods=['GET'])
 def main_page():
@@ -10,15 +13,14 @@ def main_page():
 
 @app.route('/',  methods=['POST'])
 def upload_file():
-    if (
-        'file' not in request.files or
-        (file := request.files.get('file')) or
-        file.filename.rsplit('.', 1)[1] in ACCEPTABLE_FILENAMES
-       ):
-        filename = secure_filename(file.filename)
-        file.save('download/'+filename)
-        return redirect('..')
+    file = request.files.get('file')
+    if file and file.filename.rsplit('.', 1)[1] in ACCEPTABLE_FILENAMES:
+        socketio.emit('refresh')
+        file.save('static/image')
+        print('yep')
+    return redirect('..')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    socketio.run(app, host='0.0.0.0', debug=True)
+    # app.run(host='0.0.0.0', debug=True)
