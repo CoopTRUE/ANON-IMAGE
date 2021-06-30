@@ -19,17 +19,49 @@
 <body>
     <div class="flex"> <!--HOLY SHIT I JUST CENTERED A DIV LMAOOOOO-->
         <h1 class="rainbowText">ANON IMAGE</h1>
-        <form enctype="multipart/form-data" method="post">
-            <input type="file" accept=".png,.jpg,.jpeg,.gif" id="imageInput" name="file"><br>
-            <input type="submit" value="Upload!">
+        <form enctype="multipart/form-data" method="post" id="form">
+            <!-- style="visibility:hidden; position:absolute" -->
+            <input type="url" name="url" id="urlInput">
+            <input type="file" accept=".png,.jpg,.jpeg,.gif" name="file" id="imageInput"><br>
+            <input type="submit" value="Upload!" id="submit">
           </form>
     </div>
     <center>
     <!-- <h2 class="titleDesc">By Cooper, V2.0</h2> -->
     <img src="static/image", height="500", style="height: 85vh;"></center>
     <script>
-        let imageInput = document.getElementById('imageInput')
+        const imageInput = document.getElementById('imageInput')
         imageInput.addEventListener('drop', {}, false)
+
+        function isValidHttpUrl(string) {
+            let url;
+            try {
+                url = new URL(string);
+            } catch (_) {
+                return false;
+            }
+
+            return url.protocol === "http:" || url.protocol === "https:";
+        }
+
+        window.addEventListener("paste", e => {
+            const clipboardData = e.clipboardData;
+            if (text = clipboardData.getData("Text")) {
+                if (isValidHttpUrl(text)) {
+                    console.log(text);
+                    document.getElementById("urlInput").remove()
+                    newUrlInput = document.createElement("input")
+                    newUrlInput.type = "url"
+                    newUrlInput.name = "url"
+                    newUrlInput.id = "urlInput"
+                    newUrlInput.value = text
+                    const form = document.getElementById("form")
+                    form.insertBefore(newUrlInput, document.getElementById("imageInput"))
+                }
+            } else {
+                imageInput.files = clipboardData.files;
+            }
+        });
     </script>
 </body>
 </html>
