@@ -16,6 +16,30 @@
             location.reload();
         });
     </script>
+    <script type="text/javascript", charset="utf-8">
+        // Thanks yyyyyyy.info for the code
+        function animateTitle() {
+        i >= message.length - 1 ? (i = 0) : i++,
+            (document.title = message[i]),
+            setTimeout("animateTitle()", 200);
+        }
+        var message = [
+            "▁▂▃▄▅▆▇",
+            "▂▁▂▃▄▅▆",
+            "▃▂▁▂▃▄▅",
+            "▄▃▂▁▂▃▄",
+            "▅▄▃▂▁▂▃",
+            "▆▅▄▃▂▁▂",
+            "▇▆▅▄▃▂▁",
+            "▆▇▆▅▄▃▂",
+            "▅▆▇▆▅▄▃",
+            "▄▅▆▇▆▅▄",
+            "▃▄▅▆▇▆▅",
+            "▂▃▄▅▆▇▆",
+        ],
+        i = 0;
+        animateTitle();
+    </script>
 </head>
 <body>
     <div class="flex"> <!--HOLY SHIT I JUST CENTERED A DIV LMAOOOOO-->
@@ -31,8 +55,8 @@
     <!-- <h2 class="titleDesc">By Cooper, V2.0</h2> -->
     <img src="static/image", height="500", style="height: 85vh;"></center>
     <script>
-        const imageInput = document.getElementById('imageInput')
-        imageInput.addEventListener('drop', {}, false)
+        const imageInput = document.getElementById("imageInput")
+        imageInput.addEventListener("drop", {}, false)
 
         function isValidHttpUrl(string) {
             let url;
