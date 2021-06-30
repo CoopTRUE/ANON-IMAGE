@@ -12,7 +12,10 @@
 <body>
     <h3>Yo</h3>
     <div class="flex"> <!--HOLY SHIT I JUST CENTERED A DIV LMAOOOOO-->
-        <button>UPLOAD A FILE</button>
+        <form enctype="multipart/form-data" method="post">
+            <input type="file" accept=".png,.jpg,.jpeg,.gif" id="file" name="file"><br><br>
+            <input type="submit">
+          </form>
     </div>
 </body>
 </html>
