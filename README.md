@@ -1,2 +1,2 @@
 # Loaf
-Flask based meme hosting for your entire network!
+Temporary file hosting for your entire network!
