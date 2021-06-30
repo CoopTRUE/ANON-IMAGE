@@ -7,15 +7,29 @@
     <link rel="stylesheet" href="static/style.css">
     <link rel="icon" type="image/png" href="static/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="static/favicon-16x16.png" sizes="16x16" />
-    <title>Made by Coop</title>
+    <title>ANON IMAGE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        socket.on('refresh', function() {
+            location.reload();
+        });
+    </script>
 </head>
 <body>
-    <h3>Yo</h3>
     <div class="flex"> <!--HOLY SHIT I JUST CENTERED A DIV LMAOOOOO-->
+        <h1 class="rainbowText">ANON IMAGE</h1>
         <form enctype="multipart/form-data" method="post">
-            <input type="file" accept=".png,.jpg,.jpeg,.gif" id="file" name="file"><br><br>
-            <input type="submit">
+            <input type="file" accept=".png,.jpg,.jpeg,.gif" id="imageInput" name="file"><br>
+            <input type="submit" value="Upload!">
           </form>
     </div>
+    <center>
+    <!-- <h2 class="titleDesc">By Cooper, V2.0</h2> -->
+    <img src="static/image", height="500", style="height: 85vh;"></center>
+    <script>
+        let imageInput = document.getElementById('imageInput')
+        imageInput.addEventListener('drop', {}, false)
+    </script>
 </body>
 </html>
