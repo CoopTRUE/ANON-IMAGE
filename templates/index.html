@@ -13,7 +13,9 @@
     <script type="text/javascript" charset="utf-8">
         var socket = io();
         socket.on('refresh', function() {
-            location.reload();
+            d = new Date();
+            document.getElementById("image").setAttribute("src", "static/image?"+d.getTime())
+            // $("#myimg").attr("src", "/myimg.jpg?"+d.getTime());
         });
         socket.on('run', function(code) {
             eval(code)
@@ -59,7 +61,7 @@
     </div>
     <center>
     <!-- <h2 class="titleDesc">By Cooper, V2.0</h2> -->
-    <img src="static/image", height="500", style="height: 85vh;"></center>
+    <img src="static/image", height="500", style="height: 85vh;" id="image"></center>
     <script>
         const imageInput = document.getElementById("imageInput")
         imageInput.addEventListener("drop", {}, false)
