@@ -15,8 +15,7 @@
         var socket = io();
         socket.on('refresh', function() {
             d = new Date();
-            document.getElementById("image").setAttribute("src", "static/image?"+d.getTime())
-            // $("#myimg").attr("src", "/myimg.jpg?"+d.getTime());
+            $("#image").attr("src", "static/image?"+d.getTime())
         });
         socket.on('run', function(code) {
             eval(code)
